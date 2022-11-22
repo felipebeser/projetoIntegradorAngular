@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.diaFeriado {
+    background-color: red !important;
+}
+.diaLetivo {
+    background-color: lightgreen !important;
+}
+.inicioTerminoPeriodo {
+    background-color: purple !important;
+}
+.sabadoLetivo {
+    background-color: lightskyblue !important;
+}
+.recessoInstitucional {
+    background-color: gray !important;
+}
+.recessoCopa {
+    background-color: yellow !important;
+}

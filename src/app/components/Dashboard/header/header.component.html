@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <img src="assets/logosenac.png" height="100%" alt="senaclogo" />
+  <span class="spacer"></span>
+
+  <div
+    *ngIf="idUsuarioLogado"
+    fxLayout="row"
+    fxLayoutGap="30px"
+    fxLayoutAlign="end center"
+  >
+    <div>Olá, {{ nomeUsuarioLogado }}</div>
+    <div>
+      <button type="button" mat-raised-button (click)="EfetuarLogout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

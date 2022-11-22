@@ -1,0 +1,108 @@
+<div class="card">
+  <p-table
+    #dt1
+    [value]="unidadesCurriculares"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Apresentando {first} para {last} de {totalRecords} registros"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 15rem">
+          <div class="flex justify-content-center align-items-center">
+            Modulo
+            <p-columnFilter
+              type="text"
+              field="modulo.descricao"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="min-width: 15rem">
+          <div class="flex justify-content-center align-items-center">
+            Nome
+            <p-columnFilter
+              type="text"
+              field="nome"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="min-width: 15rem">
+          <div class="flex justify-content-center align-items-center">
+            Horas
+            <p-columnFilter
+              type="text"
+              field="horas"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="min-width: 10rem">
+          <div class="flex justify-content-center align-items-center">
+            Status
+            <p-columnFilter
+              type="text"
+              field="status"
+              display="menu"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="min-width: 10rem">
+          <div class="flex justify-content-center align-items-center">
+            Activity
+          </div>
+        </th>
+        <th style="width: 3rem">
+          <div class="flex justify-content-center align-items-center">
+            Situação
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-unidadeCurricular>
+      <tr>
+        <td>
+          {{ unidadeCurricular.modulo.descricao }}
+        </td>
+        <td>
+          {{ unidadeCurricular.nome }}
+        </td>
+        <td>
+          {{ unidadeCurricular.horas }}
+        </td>
+        <td>
+          <span [class]="'customer-badge status-' + unidadeCurricular.status">{{
+            unidadeCurricular.status
+          }}</span>
+        </td>
+        <td>
+          <p-progressBar
+            [value]="unidadeCurricular.status"
+            [showValue]="false"
+          ></p-progressBar>
+        </td>
+        <td class="text-center">
+          <i
+            class="pi"
+            [ngClass]="{
+              'true-icon pi-check-circle': unidadeCurricular.status,
+              'false-icon pi-times-circle': !unidadeCurricular.status
+            }"
+          ></i>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">
+          Não existem unidades curriculares matriculadas neste semestre.
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

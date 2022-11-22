@@ -1,0 +1,25 @@
+<p>Conceitos e Feedbacks</p>
+<p-accordion [multiple]="true">
+  <p-accordionTab
+    *ngFor="let uc of unidadesCurriculares"
+    header="{{ uc.nome }}"
+  >
+    <p-table
+      [value]="registrosAvaliacaoPeriodoAtual[uc.id]"
+      [tableStyle]="{ 'min-width': '50rem' }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Ciclo</th>
+          <th>Conceito</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-reg>
+        <tr>
+          <td>{{ reg.avaliacaoTipo.descricao }}</td>
+          <td>{{ reg.avaliacaoConceito.valorMax }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-accordionTab>
+</p-accordion>
