@@ -1,6 +1,6 @@
 import { Periodo } from "./Periodo";
-import { Professor } from "./professor";
-import { Turno } from "./turno";
+import { Professor } from "./Professor";
+import { Turno } from "./Turno";
 import { UnidadeCurricular } from "./UnidadeCurricular";
 
 export class Grupo {

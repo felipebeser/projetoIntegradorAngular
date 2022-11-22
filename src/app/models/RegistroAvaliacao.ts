@@ -1,6 +1,6 @@
 import { AvaliacaoConceito } from "./AvaliacaoConceito";
 import { AvaliacaoTipo } from "./AvaliacaoTipo";
-import { Participante } from "./participante";
+import { Participante } from "./Participante";
 
 export class RegistroAvaliacao {
   id: number;

@@ -1,5 +1,5 @@
 import { Oferta } from "./Oferta";
-import { Usuario } from "./usuario";
+import { Usuario } from "./Usuario";
 
 export class Estudante {
   id: number;

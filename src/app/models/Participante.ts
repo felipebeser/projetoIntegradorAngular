@@ -1,4 +1,4 @@
-import { Estudante } from "./estudante";
+import { Estudante } from "./Estudante";
 import { Grupo } from "./Grupo";
 
 export class Participante {
