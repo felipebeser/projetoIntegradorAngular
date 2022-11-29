@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class RegistroAvaliacaoService {
 
-  url = environment.apiServer + 'api/RegitroAvaliacao';
+  url = environment.apiServer + 'api/RegistroAvaliacao';
 
   constructor(private https: HttpClient) { }
 
@@ -30,5 +30,8 @@ export class RegistroAvaliacaoService {
     return this.https.get<RegistroAvaliacao[]>(apiUrl);
   }
 
-
+  ObterRegistrosPeriodoAtualFilterByUsuarioId(usuarioId: string) : Observable<RegistroAvaliacao[]>{
+    const apiUrl = `${this.url}/TodosRegistrosFilterByUsuarioId/${usuarioId}`;
+    return this.https.get<RegistroAvaliacao[]>(apiUrl);
+  }
 }
