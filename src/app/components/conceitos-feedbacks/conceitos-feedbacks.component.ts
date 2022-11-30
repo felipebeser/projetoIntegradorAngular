@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { RegistroAvaliacao } from 'src/app/models/RegistroAvaliacao';
 import { UnidadeCurricular } from 'src/app/models/UnidadeCurricular';
 import { RegistroAvaliacaoService } from 'src/app/services/registro-avaliacao.service';
@@ -14,6 +15,7 @@ export class ConceitosFeedbacksComponent implements OnInit {
 
   unidadesCurriculares: UnidadeCurricular[];
   registrosAvaliacao: RegistroAvaliacao[];
+  registrosAvaliacaoAtual : {[key: string] : RegistroAvaliacao[]};
   loading: boolean = true;
   idUsuarioLogado : string;
 
@@ -24,14 +26,18 @@ export class ConceitosFeedbacksComponent implements OnInit {
 
     this.unidadeCurricularService.ObterUnidadeCurricularPeloUsuarioIdSemestreAtual(this.idUsuarioLogado).subscribe(resultado => {
       this.unidadesCurriculares = resultado;
+      this.unidadesCurriculares.forEach(uc => 
+        this.registroAvaliacaoService.ObterRegistrosPeriodoAtualFilterByUsuarioIdByUCId(this.idUsuarioLogado, uc.id).subscribe(resultado =>{
+          this.registrosAvaliacaoAtual[uc.nome]=resultado;
+        })
+        )
       this.loading = false;
     });
-    this.registroAvaliacaoService.ObterRegistrosPeriodoAtualFilterByUsuarioId(this.idUsuarioLogado).subscribe(resultado => {
-      this.registrosAvaliacao = resultado;
-      this.loading = false;
-    }); 
-    
-    console.log(this.idUsuarioLogado);
+    // this.registroAvaliacaoService.ObterRegistrosPeriodoAtualFilterByUsuarioId(this.idUsuarioLogado).subscribe(resultado => {
+    //   this.registrosAvaliacao = resultado;
+    //   this.loading = false;
+    // });
+    console.log(this.registrosAvaliacaoAtual);
   }
 
 }
