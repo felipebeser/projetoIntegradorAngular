@@ -15,7 +15,7 @@ export class ConceitosFeedbacksComponent implements OnInit {
 
   unidadesCurriculares: UnidadeCurricular[];
   registrosAvaliacao: RegistroAvaliacao[];
-  registrosAvaliacaoAtual : {[key: string] : RegistroAvaliacao[]};
+  registrosAvaliacaoAtual : {[key: string] : RegistroAvaliacao[]} = {};
   loading: boolean = true;
   idUsuarioLogado : string;
 
@@ -28,7 +28,7 @@ export class ConceitosFeedbacksComponent implements OnInit {
       this.unidadesCurriculares = resultado;
       this.unidadesCurriculares.forEach(uc => 
         this.registroAvaliacaoService.ObterRegistrosPeriodoAtualFilterByUsuarioIdByUCId(this.idUsuarioLogado, uc.id).subscribe(resultado =>{
-          this.registrosAvaliacaoAtual[uc.nome]=resultado;
+          this.registrosAvaliacaoAtual[uc.nomeCurto]=resultado;
         })
         )
       this.loading = false;
@@ -38,6 +38,7 @@ export class ConceitosFeedbacksComponent implements OnInit {
     //   this.loading = false;
     // });
     console.log(this.registrosAvaliacaoAtual);
+    console.log(this.idUsuarioLogado);
   }
 
 }

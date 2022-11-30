@@ -25,13 +25,15 @@ export class RegistroAvaliacaoService {
     const apiUrl = `${this.url}/TodosRegistrosFilterByUsuarioId/${id}`;
     return this.https.get<RegistroAvaliacao[]>(apiUrl);
   }
+
+  ObterRegistrosPeriodoAtualFilterByUsuarioId(usuarioId: string) : Observable<RegistroAvaliacao[]>{
+    const apiUrl = `${this.url}/TodosRegistrosPeriodoAtualFilterByUsuarioId/${usuarioId}`;
+    return this.https.get<RegistroAvaliacao[]>(apiUrl);
+  }
+  
   ObterRegistrosPeriodoAtualFilterByUsuarioIdByUCId(usuarioId: string, ucId: number) : Observable<RegistroAvaliacao[]>{
-    const apiUrl = `${this.url}/TodosRegistrosFilterByUsuarioId/${usuarioId}/${ucId}`;
+    const apiUrl = `${this.url}/TodosRegistrosPeriodoAtualFilterByUsuarioIdByUCId/${usuarioId}/${ucId}`;
     return this.https.get<RegistroAvaliacao[]>(apiUrl);
   }
 
-  ObterRegistrosPeriodoAtualFilterByUsuarioId(usuarioId: string) : Observable<RegistroAvaliacao[]>{
-    const apiUrl = `${this.url}/TodosRegistrosFilterByUsuarioId/${usuarioId}`;
-    return this.https.get<RegistroAvaliacao[]>(apiUrl);
-  }
 }

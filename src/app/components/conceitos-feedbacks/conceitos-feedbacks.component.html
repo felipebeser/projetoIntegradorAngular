@@ -1,13 +1,10 @@
-<!-- <p>Conceitos e Feedbacks</p>
+<p>Conceitos e Feedbacks</p>
 <p-accordion [multiple]="true">
   <p-accordionTab
-    *ngFor="let reg of registrosAvaliacaoAtual"
-    header="{{ reg.participante.grupo.unidadeCurricular.nome }}"
+    *ngFor="let reg of registrosAvaliacaoAtual | keyvalue"
+    header="{{ reg.key }}"
   >
-    <p-table
-      [value]="registrosAvaliacao"
-      [tableStyle]="{ 'min-width': '50rem' }"
-    >
+    <p-table [value]="reg.value" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
         <tr>
           <th>Avaliação</th>
@@ -22,4 +19,4 @@
       </ng-template>
     </p-table>
   </p-accordionTab>
-</p-accordion> -->
+</p-accordion>
